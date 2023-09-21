@@ -1,0 +1,10 @@
+.env
+.DS_Store
+.adminjs/
+.nova/
+dist/
+public/files/
+node_modules/
+src/relations/
+src/hooks/
+

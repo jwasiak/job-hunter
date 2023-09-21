@@ -1,0 +1,214 @@
+:root {
+  --primary100-color: #0e93e5;
+  --accent-color: #fda03c;
+  --border-color: #9bc0e9;
+  --primary-button-hover: gba(14, 147, 229, 0.05);
+  --font-size-lg: 16px;
+  --space-xxl: 32px;
+  --sidebar-bg: #eaf5fc;
+  --filter-bg: #fff2e5;
+}
+
+.react-datepicker-wrapper {
+  border-color: var(--border-color) !important;
+}
+
+section[data-css$='breadcrumbs'] a {
+  display: none;
+}
+
+thead[data-css$='table-head'] {
+  background-color: var(--filter-bg);
+}
+
+section[data-css$='-action-header'] section h2,
+section[data-css$='-action-header'] section h3 {
+  text-transform: uppercase;
+  margin-right: var(--space-xxl);
+  padding-left: var(--space-xxl);
+  border-radius: 4px;
+  background-color: var(--primary100-color);
+  color: white;
+  letter-spacing: 3px;
+  font-size: var(--font-size-lg);
+}
+
+section[data-css$='list-action-header'] section h2 span {
+  display: none;
+}
+
+section[data-css$='-action-header'] section h3 a {
+  color: white;
+  /* border-color: white; */
+}
+
+a[data-css$='export-button'],
+a[data-css$='import-button'] {
+  border-radius: 4px;
+  color: var(--accent-color) !important;
+  /* border-color: var(--accent-color); */
+}
+
+a[data-css$='filter-button'],
+button[data-css$='new-drawer-submit'],
+button[data-css$='edit-drawer-submit'],
+section[data-css$='bulkDelete-drawer-footer'] button {
+  background-color: transparent;
+  color: var(--primary100-color);
+  border-color: var(--primary100-color);
+}
+
+button[data-css$='new-drawer-submit']:hover,
+button[data-css$='edit-drawer-submit']:hover,
+section[data-css$='bulkDelete-drawer-footer'] button:hover {
+  /* border: solid 2px red; */
+  color: var(--primary100-color);
+  border-color: var(--primary100-color);
+  /* background-color: transparent; */
+  background-color: var(--primary-button-hover);
+}
+/* section[data-css=$'sidebar-resources'] a,
+section[data-css='sidebar-resources'] svg {
+  color: white !important;
+}
+
+section[data-css='sidebar-resources'] a: hover {
+  color: black !important;
+}
+
+section[data-css='sidebar-resources'] a: visited {
+  border: solid 2px red;
+}
+
+section[data-css='sidebar-resources'] ul li ul li:hover {
+  background-color: white !important;
+}
+
+section[data-css='sidebar-resources'] ul li ul li:active {
+  background-color: white !important;
+} */
+
+/* a[data-css='ActivityType-filter-button'],
+a[data-css='Source-filter-button'],
+a[data-css='CompanyStatus-filter-button'],
+a[data-css='Business-filter-button'] {
+  display: none;
+} */
+
+section[data-css='Attachments-show-attachments'] label,
+section[data-css='Attachments-edit-attachments'] label {
+  display: none;
+}
+
+section[data-css='Attachments-show-attachments'] a {
+  margin: 0;
+  padding: 2px 0 2px 0;
+}
+
+div[data-testid^='notes'] {
+  /* border: 2px solid red; */
+  padding-top: 8px;
+  padding-bottom: 0px;
+}
+
+div[data-testid='property-edit-notes'] > section > div > div > div > section,
+div[data-testid='property-edit-items'] > section > div > div > div > section,
+div[data-testid='property-edit-payments'] > section > div > div > div > section,
+div[data-testid='property-edit-persons'] > section > div > div > div > section,
+div[data-testid='property-edit-activities'] > section > div > div > div > section {
+  display: flex;
+  flex-wrap: wrap;
+  /* border: 2px solid red; */
+}
+
+div[data-testid='property-edit-notes'] > section > div > div > div section[data-css$='date'],
+div[data-testid='property-edit-payments'] > section > div > div > div section[data-css$='date'],
+div[data-testid='property-edit-payments'] > section > div > div > div section[data-css$='source'],
+div[data-testid='property-edit-activities'] > section > div > div > div section[data-css$='date'] {
+  margin-right: 10px;
+  /* border: 2px solid green; */
+}
+div[data-testid='property-edit-notes'] > section > div > div > div section[data-css$='title'] {
+  flex-grow: 4;
+}
+div[data-testid='property-edit-notes'] > section > div > div > div section[data-css$='content'],
+div[data-testid='property-edit-activities'] > section > div > div > div section[data-css$='comment'],
+div[data-testid='property-edit-activities'] > section > div > div > div section[data-css$='title'],
+div[data-testid='property-edit-persons'] > section > div > div > div > section section[data-css$='name'],
+div[data-testid='property-edit-items'] > section > div > div > div section[data-css$='name'] {
+  flex-basis: 100%;
+}
+
+/* div[data-testid='property-edit-persons'] > section > div > div > div > section section[data-css$='name'] {
+  flex-basis: 100%;
+} */
+
+div[data-testid='property-edit-persons'] > section > div > div > div > section section[data-css$='email'],
+div[data-testid='property-edit-activities'] > section > div > div > div section[data-css$='type'],
+div[data-testid='property-edit-items'] > section > div > div > div section[data-css$='quantity'],
+div[data-testid='property-edit-items'] > section > div > div > div section[data-css$='unit'],
+div[data-testid='property-edit-items'] > section > div > div > div section[data-css$='price'],
+div[data-testid='property-edit-payments'] > section > div > div > div section[data-css$='date'],
+div[data-testid='property-edit-payments'] > section > div > div > div section[data-css$='source'] {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+div[data-testid='property-edit-persons'] > section > div > div > div > section section[data-css$='phone'] {
+  flex-grow: 1;
+}
+
+.customer-show-address > section > section > section {
+  display: flex;
+  flex-wrap: wrap;
+  /* border: 2px solid red; */
+}
+
+.customer-show-address > section > section > section section[data-css$='postalCode'] {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+.customer-show-address > section > section > section section[data-css$='city'] {
+  flex-grow: 3;
+  margin-right: 10px;
+}
+
+.customer-show-address > section > section > section section[data-css$='country'] {
+  flex-grow: 3;
+}
+
+.customer-show-address > section > section > section section[data-css$='address'] {
+  flex-basis: 100%;
+}
+
+.customer-edit-address > section > div > section {
+  display: flex;
+  flex-wrap: wrap;
+  /* border: 2px solid green; */
+}
+
+.customer-edit-address > section > div > section section[data-css$='postalCode'] {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+.customer-edit-address > section > div > section section[data-css$='city'] {
+  flex-grow: 3;
+  margin-right: 10px;
+}
+
+.customer-edit-address > section > div > section section[data-css$='country'] {
+  flex-grow: 3;
+}
+
+.customer-edit-address > section > div > section section[data-css$='address'] {
+  flex-basis: 100%;
+}
+
+/* section[data-css*='Prospect-edit-persons'] > div > div,
+section[data-css*='Prospect-edit-notes'] > div > div,
+section[data-css*='Prospect-edit-activities'] > div > div {
+  border: 2px solid red;
+  display: none;
+} */
