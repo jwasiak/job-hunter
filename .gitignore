@@ -7,4 +7,5 @@ public/files/
 node_modules/
 src/relations/
 src/hooks/
+tmp/
 
