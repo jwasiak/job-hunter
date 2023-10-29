@@ -56,6 +56,7 @@ const edit: Array<LayoutElement> = [
     ],
   ],
   'info',
+  'selectTemplateToClipboard',
   'persons',
   'notes',
   'activities',

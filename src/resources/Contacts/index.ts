@@ -82,6 +82,11 @@ export const ContactsResource: ResourceWithOptions = {
           list: Components.ListCounter,
         },
       },
+      selectTemplateToClipboard: {
+        components: {
+          edit: Components.SelectTemplateToClipboard,
+        },
+      },
     },
   },
   features,

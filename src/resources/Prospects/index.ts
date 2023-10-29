@@ -117,6 +117,11 @@ export const ProspectsResource: ResourceWithOptions = {
           list: Components.ListCounter,
         },
       },
+      selectTemplateToClipboard: {
+        components: {
+          edit: Components.SelectTemplateToClipboard,
+        },
+      },
     },
   },
   features,

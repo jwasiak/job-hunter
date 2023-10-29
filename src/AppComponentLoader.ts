@@ -16,4 +16,5 @@ export const Components = {
   ListCounter: AppComponentLoader.add('ListCounter', './components/list-counter'),
   CustomActionButton: AppComponentLoader.add('CustomActionButton', './components/action-button'),
   Invoices: AppComponentLoader.add('Invoices', './components/invoices'),
+  SelectTemplateToClipboard: AppComponentLoader.add('SelectTemplateToClipboard', './components/select-template'),
 }
