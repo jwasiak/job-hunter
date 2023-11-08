@@ -91,7 +91,7 @@ export class Prospect extends BaseEntity implements IProspect {
   @JoinColumn({ name: 'status_code' })
   public status: CompanyStatus
   @RelationId((prospect: Prospect) => prospect.status)
-  @Column({ name: 'status_code', nullable: true, default: 'UNQUALIFIED' })
+  @Column({ name: 'status_code', nullable: true })
   public statusCode: string
 
   @ManyToOne(() => ActivityType)
@@ -120,4 +120,7 @@ export class Prospect extends BaseEntity implements IProspect {
 
   @VirtualColumn({ query: () => `SELECT jsonb_array_length(activities)` })
   public counter: number
+
+  @VirtualColumn({ query: () => `SELECT lower(company)` })
+  public company_: string
 }

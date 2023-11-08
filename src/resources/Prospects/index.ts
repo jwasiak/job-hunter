@@ -11,7 +11,7 @@ export const ProspectsResource: ResourceWithOptions = {
   options: {
     navigation: menu.app,
     listProperties: ['company', 'statusCode', 'nextActivityCode', 'nextActivityDate', 'counter'],
-    filterProperties: ['company', 'statusCode', 'nextActivityCode', 'nextActivityDate', 'sourceId', 'businessId'],
+    filterProperties: ['company_', 'statusCode', 'nextActivityCode', 'nextActivityDate', 'sourceId', 'businessId'],
     sort: {
       direction: 'desc',
       sortBy: 'updatedAt',
@@ -27,11 +27,6 @@ export const ProspectsResource: ResourceWithOptions = {
       company: {
         isTitle: true,
         isRequired: true,
-      },
-      statusCode: {
-        isRequired: true,
-        // type: 'reference',
-        // reference: 'CompanyStatus',
       },
       phone: {
         type: 'string',
