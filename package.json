@@ -8,7 +8,7 @@
   "scripts": {
     "build": "rm -rf dist && tsc",
     "start-dev": "NODE_ENV='develomenent' node dist/app.js",
-    "start": "NODE_ENV='production' nodemon dist/app.js"
+    "start": "NODE_ENV='production' node dist/app.js"
   },
   "dependencies": {
     "@adminjs/express": "^6.0.0",
@@ -37,7 +37,6 @@
     "@typescript-eslint/parser": "^6.7.2",
     "eslint": "^8.49.0",
     "eslint-plugin-react": "^7.33.2",
-    "nodemon": "^3.0.1",
     "prettier": "3.0.3",
     "typescript": "^5.2.2"
   }
