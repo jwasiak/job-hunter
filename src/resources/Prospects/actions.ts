@@ -19,6 +19,45 @@ const filterConvertedProspects = (req: ActionRequest): ActionRequest => {
   return req
 }
 
+const setDefaultValues = (req: ActionRequest, ctx: ActionContext) => {
+  const { action } = ctx
+  const { payload = {}, method } = req
+  if (method !== 'post') return req
+
+  const today = new Date()
+  const defaults = action.custom()
+  const updatedPayload = flat.unflatten(payload)
+  if (defaults.statusCode) {
+    updatedPayload.statusCode = defaults.statusCode
+  }
+  if (updatedPayload.notes?.length) {
+    updatedPayload.notes[0].date = today
+  }
+  if (updatedPayload.activities?.length === 1) {
+    updatedPayload.activities[0].date = today
+  }
+  if (defaults.activityCode && (updatedPayload.activities === undefined || updatedPayload.activities?.length === 0)) {
+    updatedPayload.activities = []
+    const activity = {
+      date: today,
+      type: defaults.activityCode || null,
+      title: defaults.activityTitle || null,
+    }
+    updatedPayload.activities.push(activity)
+  }
+
+  const nextActivityDate = new Date()
+  nextActivityDate.setDate(today.getDate() + 30)
+  if (defaults.nextActivityCode) {
+    updatedPayload.nextActivityDate = nextActivityDate
+    updatedPayload.nextActivityCode = defaults.nextActivityCode
+  }
+  // req.payload = flat.flatten(updatedPayload)
+  req.payload = updatedPayload
+  console.log(updatedPayload)
+  return req
+}
+
 const showAttachments = async (req: ActionRequest, res: ActionResponse, ctx: ActionContext) => {
   const { resource, record, currentAdmin, _admin, h } = ctx
   const Attachments: BaseResource = _admin.findResource('Attachments')
@@ -104,10 +143,17 @@ export const actions: ResourceOptions['actions'] = {
   // },
   new: {
     layout: layout.new,
+    before: [setDefaultValues],
+    custom: {
+      statusCode: 'ENTERED',
+      activityCode: 'FORM',
+      activityTitle: 'Zgłoszenie',
+      nextActivityCode: 'DECISION',
+      nextActivityDay: 30,
+    },
   },
   edit: {
     layout: layout.edit,
-    // component: Components.JmwComponent,
   },
   show: {
     layout: layout.show,

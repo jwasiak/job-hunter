@@ -34,6 +34,18 @@ const show: Array<LayoutElement> = [
   'activities',
 ]
 
+const new_: Array<LayoutElement> = [
+  [
+    { flexDirection: 'row', flex: true },
+    [
+      ['company', { flexGrow: 3, marginRight: '10px' }],
+      ['sourceId', { flexGrow: 1 }],
+    ],
+  ],
+  'notes',
+  'activities',
+]
+
 const edit: Array<LayoutElement> = [
   [
     { flex: true, flexDirection: 'row', justifyContent: 'space-between' },
@@ -79,7 +91,7 @@ const timestamps: LayoutElement = [
 ]
 
 export default {
-  new: edit,
+  new: new_,
   edit,
   show: [...show, timestamps],
 }
