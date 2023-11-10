@@ -17,4 +17,5 @@ export const Components = {
   CustomActionButton: AppComponentLoader.add('CustomActionButton', './components/action-button'),
   Invoices: AppComponentLoader.add('Invoices', './components/invoices'),
   SelectTemplateToClipboard: AppComponentLoader.add('SelectTemplateToClipboard', './components/select-template'),
+  DeadProspects: AppComponentLoader.add('DeadProspects', './components/dead-prospects'),
 }
