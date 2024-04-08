@@ -61,10 +61,10 @@ export class Invoice extends BaseEntity implements IInvoice {
   @Column({ type: 'date', name: 'due_date' })
   public dueDate: Date
 
-  @Column({ type: 'jsonb', default: '[]' })
+  @Column({ type: 'text', default: '[]' })
   public items: InvoiceItem[]
 
-  @Column({ type: 'jsonb', default: '[]' })
+  @Column({ type: 'text', default: '[]' })
   public payments: Payment[]
 
   @CreateDateColumn({ name: 'created_at' })

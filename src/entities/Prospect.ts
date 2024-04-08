@@ -48,7 +48,7 @@ export class Prospect extends BaseEntity implements IProspect {
   @Column({ unique: true })
   public company: string
 
-  @Column({ type: 'jsonb', nullable: true })
+  @Column({ type: 'text', nullable: true })
   public address: Address
 
   @Column({ nullable: true })
@@ -72,13 +72,13 @@ export class Prospect extends BaseEntity implements IProspect {
   @Column({ name: 'attachments_id', nullable: true })
   public attachmentsId: number
 
-  @Column({ type: 'jsonb', nullable: true })
+  @Column({ type: 'text', nullable: true })
   public persons: Person[]
 
-  @Column({ type: 'jsonb', nullable: true })
+  @Column({ type: 'text', nullable: true })
   public activities: Activity[]
 
-  @Column({ type: 'jsonb', nullable: true })
+  @Column({ type: 'text', nullable: true })
   public notes: Note[]
 
   @CreateDateColumn({ name: 'created_at' })
@@ -118,7 +118,7 @@ export class Prospect extends BaseEntity implements IProspect {
   @Column({ name: 'next_activity_date', nullable: true })
   public nextActivityDate: Date
 
-  @VirtualColumn({ query: () => `SELECT jsonb_array_length(activities)` })
+  @VirtualColumn({ query: () => `SELECT json_array_length(activities)` })
   public counter: number
 
   @VirtualColumn({ query: () => `SELECT lower(company)` })

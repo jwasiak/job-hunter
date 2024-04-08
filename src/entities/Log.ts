@@ -31,7 +31,7 @@ export class Log extends BaseEntity implements ILog {
   @Column({ name: 'record_title', type: 'text', nullable: true })
   public recordTitle: string
 
-  @Column({ name: 'difference', type: 'jsonb', nullable: true })
+  @Column({ name: 'difference', type: 'text', nullable: true })
   public difference: Record<string, unknown>
 
   @Column({ nullable: true })

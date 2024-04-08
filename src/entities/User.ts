@@ -46,7 +46,7 @@ export class User extends BaseEntity implements IUser {
   public updatedAt?: Date
 
   @Column({
-    type: 'enum',
+    type: 'text',
     enum: RoleEnum,
     nullable: true,
   })

@@ -27,7 +27,7 @@ export class Link extends BaseEntity implements ILink {
   public description: string
 
   @Column({
-    type: 'enum',
+    type: 'text',
     enum: LinksEnum,
     nullable: true,
   })

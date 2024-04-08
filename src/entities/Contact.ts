@@ -66,10 +66,10 @@ export class Contact extends BaseEntity implements IContact {
   @Column({ name: 'attachments_id', nullable: true })
   public attachmentsId: number
 
-  @Column({ type: 'jsonb', nullable: true, default: '[]' })
+  @Column({ type: 'text', nullable: true, default: '[]' })
   public persons: Person[]
 
-  @Column({ type: 'jsonb', nullable: true, default: '[]' })
+  @Column({ type: 'text', nullable: true, default: '[]' })
   public activities: Activity[]
 
   @CreateDateColumn({ name: 'created_at' })
@@ -109,6 +109,6 @@ export class Contact extends BaseEntity implements IContact {
   @Column({ name: 'next_activity_date', nullable: true })
   public nextActivityDate: Date
 
-  @VirtualColumn({ query: () => `SELECT jsonb_array_length(activities)` })
+  @VirtualColumn({ query: () => `SELECT json_array_length(activities)` })
   public counter: number
 }

@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "build": "rm -rf dist && tsc",
-    "start-dev": "NODE_ENV='develomenent' node dist/app.js",
+    "dev": "NODE_ENV='develomenent' node dist/app.js",
     "start": "NODE_ENV='production' node dist/app.js"
   },
   "dependencies": {
@@ -26,6 +26,7 @@
     "express-session": "^1.17.3",
     "lodash": "^4.17.21",
     "pg": "^8.11.3",
+    "sqlite3": "^5.1.7",
     "typeorm": "^0.3.16"
   },
   "devDependencies": {

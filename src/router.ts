@@ -16,9 +16,9 @@ export const getAdminRouter = (admin: AdminJS) => {
     null,
     {
       secret: process.env.SESSION_SECRET || 'super_secret',
-      saveUninitialized: false,
-      resave: true,
-      store: sessionStore,
+      // saveUninitialized: false,
+      // resave: true,
+      // store: sessionStore,
     }
   )
 
