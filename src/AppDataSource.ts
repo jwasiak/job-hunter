@@ -3,10 +3,10 @@ import { DataSource } from 'typeorm'
 export const AppDataSource = (entities: ConstructorParameters<typeof DataSource>[0]['entities']) => {
   let sourceConfig
 
-  if (process.env.DB_CLIENT === 'sqlite') {
+  if (process.env.DB_CLIENT === 'better-sqlite3') {
     sourceConfig = {
-      type: 'sqlite',
-      database: `../db/job-hunter.db`,
+      type: process.env.DB_CLIENT,
+      database: `./db/job-hunter.db`,
       entities,
       logging: true,
       synchronize: true,
