@@ -1,26 +1,23 @@
+import { fileURLToPath } from 'node:url'
 import argon from 'argon2'
-import PostgresSession from 'connect-pg-simple'
+import sqlite3 from 'sqlite3'
 import session from 'express-session'
-import Pool from 'pg-pool'
+import sqliteStoreFactory from 'express-session-sqlite'
 import { User } from './entities/User.js'
 
-const pgConfig = {
-  user: process.env.DB_USER ?? 'postgres',
-  password: process.env.DB_PASS ?? 'postgres',
-  host: process.env.DB_HOST ?? 'localhost',
-  port: process.env.DB_PORT ? +process.env.DB_PORT : 5432,
-  database: process.env.DB_NAME,
-  ssl: false,
+const dbDir = fileURLToPath(new URL('../db/', import.meta.url))
+
+const dbConfig = {
+  driver: sqlite3.Database,
+  path: dbDir + 'job-hunter.db',
+  ttl: 86400000,
+  prefix: 'sess:',
+  cleanupInterval: 300000,
 }
-const PostgresStore = PostgresSession(session)
 
-const pool = new Pool(pgConfig)
+const SqliteStore = sqliteStoreFactory.default(session)
 
-export const sessionStore = new PostgresStore({
-  pool,
-  tableName: 'sessions',
-  createTableIfMissing: true,
-})
+export const sessionStore = new SqliteStore(dbConfig)
 
 export const authenticate = async (login: string, password: string) => {
   const loggedUser = await User.findOne({
