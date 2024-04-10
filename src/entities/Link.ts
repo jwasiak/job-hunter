@@ -1,4 +1,4 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm'
+import { BaseEntity, Column, Entity, PrimaryGeneratedColumn, BeforeInsert, BeforeUpdate } from 'typeorm'
 
 import { LinksEnum } from '../enums/LinksEnum.js'
 
@@ -14,10 +14,10 @@ export class Link extends BaseEntity implements ILink {
   @PrimaryGeneratedColumn()
   public id: number
 
-  @CreateDateColumn({ name: 'created_at' })
+  @Column({ name: 'created_at' })
   public createdAt: Date
 
-  @UpdateDateColumn({ name: 'updated_at' })
+  @Column({ name: 'updated_at' })
   public updatedAt: Date
 
   @Column()
@@ -32,4 +32,15 @@ export class Link extends BaseEntity implements ILink {
     nullable: true,
   })
   public category: LinksEnum
+
+  @BeforeInsert()
+  public setCreateDate(): void {
+    this.createdAt = new Date();
+    this.updatedAt = new Date();
+  }
+
+  @BeforeUpdate()
+  public setUpdateDate(): void {
+    this.updatedAt = new Date();
+  }
 }

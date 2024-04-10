@@ -1,4 +1,4 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm'
+import { BaseEntity, Column, Entity, PrimaryGeneratedColumn, BeforeInsert, BeforeUpdate } from 'typeorm'
 
 export interface ITemplate {
   id: number
@@ -10,10 +10,10 @@ export class Template extends BaseEntity implements ITemplate {
   @PrimaryGeneratedColumn()
   public id: number
 
-  @CreateDateColumn({ name: 'created_at' })
+  @Column({ name: 'created_at' })
   public createdAt: Date
 
-  @UpdateDateColumn({ name: 'updated_at' })
+  @Column({ name: 'updated_at' })
   public updatedAt: Date
 
   @Column({ nullable: true })
@@ -24,4 +24,15 @@ export class Template extends BaseEntity implements ITemplate {
 
   @Column({ nullable: true })
   public html: string
+
+  @BeforeInsert()
+  public setCreateDate(): void {
+    this.createdAt = new Date();
+    this.updatedAt = new Date();
+  }
+
+  @BeforeUpdate()
+  public setUpdateDate(): void {
+    this.updatedAt = new Date();
+  }
 }

@@ -1,13 +1,13 @@
 import {
   BaseEntity,
   Column,
-  CreateDateColumn,
+  BeforeInsert,
   Entity,
   JoinColumn,
   ManyToOne,
   PrimaryGeneratedColumn,
   RelationId,
-  UpdateDateColumn,
+  BeforeUpdate,
   VirtualColumn,
 } from 'typeorm'
 
@@ -61,16 +61,16 @@ export class Invoice extends BaseEntity implements IInvoice {
   @Column({ type: 'date', name: 'due_date' })
   public dueDate: Date
 
-  @Column({ type: 'text', default: '[]' })
+  @Column({ type: 'json', default: '[]' })
   public items: InvoiceItem[]
 
-  @Column({ type: 'text', default: '[]' })
+  @Column({ type: 'json', default: '[]' })
   public payments: Payment[]
 
-  @CreateDateColumn({ name: 'created_at' })
+  @Column({ name: 'created_at' })
   public createdAt: Date
 
-  @UpdateDateColumn({ name: 'updated_at' })
+  @Column({ name: 'updated_at' })
   public updatedAt: Date
 
   @ManyToOne(() => Customer, customer => customer.id)
@@ -91,4 +91,15 @@ export class Invoice extends BaseEntity implements IInvoice {
 
   @VirtualColumn({ query: () => `SELECT paid-invoice_value` })
   public balance: number
+
+  @BeforeInsert()
+  public setCreateDate(): void {
+    this.createdAt = new Date();
+    this.updatedAt = new Date();
+  }
+
+  @BeforeUpdate()
+  public setUpdateDate(): void {
+    this.updatedAt = new Date();
+  }
 }

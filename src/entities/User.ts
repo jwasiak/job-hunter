@@ -1,10 +1,10 @@
 import {
   BaseEntity,
   Column,
-  CreateDateColumn,
+  BeforeInsert,
   Entity,
   PrimaryGeneratedColumn,
-  UpdateDateColumn,
+  BeforeUpdate,
   VirtualColumn,
 } from 'typeorm'
 import { RoleEnum } from '../enums/Roles.js'
@@ -39,10 +39,10 @@ export class User extends BaseEntity implements IUser {
   @Column({ name: 'first_name', type: 'text', nullable: true })
   public firstName: string
 
-  @CreateDateColumn({ name: 'created_at' })
+  @Column({ name: 'created_at' })
   public createdAt: Date
 
-  @UpdateDateColumn({ name: 'updated_at' })
+  @Column({ name: 'updated_at' })
   public updatedAt?: Date
 
   @Column({
@@ -57,4 +57,15 @@ export class User extends BaseEntity implements IUser {
 
   @VirtualColumn({ query: () => `SELECT CONCAT(last_name,' ',first_name)` })
   public fullName: string
+
+  @BeforeInsert()
+  public setCreateDate(): void {
+    this.createdAt = new Date();
+    this.updatedAt = new Date();
+  }
+
+  @BeforeUpdate()
+  public setUpdateDate(): void {
+    this.updatedAt = new Date();
+  }
 }

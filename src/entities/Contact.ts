@@ -1,14 +1,12 @@
 import {
   BaseEntity,
   Column,
-  CreateDateColumn,
   Entity,
   JoinColumn,
   ManyToOne,
   PrimaryGeneratedColumn,
   RelationId,
-  UpdateDateColumn,
-  VirtualColumn,
+  VirtualColumn, BeforeInsert, BeforeUpdate
 } from 'typeorm'
 
 import { Activity, Person } from './index.js'
@@ -66,16 +64,16 @@ export class Contact extends BaseEntity implements IContact {
   @Column({ name: 'attachments_id', nullable: true })
   public attachmentsId: number
 
-  @Column({ type: 'text', nullable: true, default: '[]' })
+  @Column({ type: 'json', nullable: true, default: '[]' })
   public persons: Person[]
 
-  @Column({ type: 'text', nullable: true, default: '[]' })
+  @Column({ type: 'json', nullable: true, default: '[]' })
   public activities: Activity[]
 
-  @CreateDateColumn({ name: 'created_at' })
+  @Column({ name: 'created_at' })
   public createdAt: Date
 
-  @UpdateDateColumn({ name: 'updated_at' })
+  @Column({ name: 'updated_at' })
   public updatedAt: Date
 
   @ManyToOne(() => CompanyStatus, status => status.code)
@@ -111,4 +109,16 @@ export class Contact extends BaseEntity implements IContact {
 
   @VirtualColumn({ query: () => `SELECT json_array_length(activities)` })
   public counter: number
+
+  @BeforeInsert()
+  public setCreateDate(): void {
+    this.createdAt = new Date();
+    this.updatedAt = new Date();
+  }
+
+  @BeforeUpdate()
+  public setUpdateDate(): void {
+    this.updatedAt = new Date();
+  }
+
 }

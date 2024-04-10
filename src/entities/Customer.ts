@@ -1,13 +1,13 @@
 import {
   BaseEntity,
   Column,
-  CreateDateColumn,
+  BeforeInsert,
   Entity,
   JoinColumn,
   ManyToOne,
   PrimaryGeneratedColumn,
   RelationId,
-  UpdateDateColumn,
+  BeforeUpdate,
   VirtualColumn,
 } from 'typeorm'
 
@@ -70,19 +70,19 @@ export class Customer extends BaseEntity implements ICustomer {
   @Column({ name: 'attachments_id', nullable: true })
   public attachmentsId: number
 
-  @Column({ type: 'text', nullable: true })
+  @Column({ type: 'json', nullable: true })
   public persons: Person[]
 
-  @Column({ type: 'text', nullable: true })
+  @Column({ type: 'json', nullable: true })
   public activities: Activity[]
 
-  @Column({ type: 'text', nullable: true })
+  @Column({ type: 'json', nullable: true })
   public notes: Note[]
 
-  @CreateDateColumn({ name: 'created_at' })
+  @Column({ name: 'created_at' })
   public createdAt: Date
 
-  @UpdateDateColumn({ name: 'updated_at' })
+  @Column({ name: 'updated_at' })
   public updatedAt: Date
 
   @ManyToOne(() => CompanyStatus, status => status.code)
@@ -126,4 +126,15 @@ export class Customer extends BaseEntity implements ICustomer {
 
   @VirtualColumn({ query: () => `SELECT json_array_length(activities)` })
   public counter: number
+
+  @BeforeInsert()
+  public setCreateDate(): void {
+    this.createdAt = new Date();
+    this.updatedAt = new Date();
+  }
+
+  @BeforeUpdate()
+  public setUpdateDate(): void {
+    this.updatedAt = new Date();
+  }
 }

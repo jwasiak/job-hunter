@@ -3,8 +3,8 @@ import {
   BaseEntity,
   PrimaryGeneratedColumn,
   Column,
-  CreateDateColumn,
-  UpdateDateColumn,
+  BeforeInsert,
+  BeforeUpdate,
   VirtualColumn,
 } from 'typeorm'
 
@@ -26,21 +26,32 @@ export class Attachments extends BaseEntity implements IAttachments {
   @Column({ unique: true })
   public company: string
 
-  @Column({ nullable: true, type: 'text', default: '[]' })
+  @Column({ nullable: true, type: 'json', default: '[]' })
   public files: string[]
 
-  @Column({ nullable: true, type: 'text', default: '[]' })
+  @Column({ nullable: true, type: 'json', default: '[]' })
   public folders: string[]
 
-  @Column({ name: 'mime_types', nullable: true, type: 'text', default: '[]' })
+  @Column({ name: 'mime_types', nullable: true, type: 'json', default: '[]' })
   public mimeTypes: string[]
 
-  @CreateDateColumn({ name: 'created_at' })
+  @Column({ name: 'created_at' })
   public createdAt: Date
 
-  @UpdateDateColumn({ name: 'updated_at' })
+  @Column({ name: 'updated_at' })
   public updatedAt: Date
 
   @VirtualColumn({ query: () => `SELECT json_array_length(files)` })
   public counter: number
+
+  @BeforeInsert()
+  public setCreateDate(): void {
+    this.createdAt = new Date();
+    this.updatedAt = new Date();
+  }
+
+  @BeforeUpdate()
+  public setUpdateDate(): void {
+    this.updatedAt = new Date();
+  }
 }

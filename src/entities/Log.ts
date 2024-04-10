@@ -1,4 +1,4 @@
-import { BaseEntity, Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm'
+import { BaseEntity, Column, BeforeInsert, Entity, PrimaryGeneratedColumn } from 'typeorm'
 
 export interface ILog {
   id: number
@@ -16,7 +16,7 @@ export class Log extends BaseEntity implements ILog {
   @PrimaryGeneratedColumn()
   public id: number
 
-  @CreateDateColumn({ name: 'created_at' })
+  @Column({ name: 'created_at' })
   public createdAt: Date
 
   @Column({ name: 'action', type: 'text' })
@@ -36,4 +36,9 @@ export class Log extends BaseEntity implements ILog {
 
   @Column({ nullable: true })
   public user: string
+
+  @BeforeInsert()
+  public setCreateDate(): void {
+    this.createdAt = new Date()
+  }
 }
