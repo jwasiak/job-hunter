@@ -8,6 +8,7 @@ export const TemplatesResource: ResourceWithOptions = {
   resource: Template,
   options: {
     navigation: menu.app,
+    editProperties: ['name', 'text', 'html'],
     listProperties: ['name', 'updatedAt'],
     filterProperties: ['name'],
     actions: {
