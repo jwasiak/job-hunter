@@ -1,0 +1,6 @@
+{
+    "verbose": false,
+    "exec": "node dist/app.js",
+    "watch": ["dist"],
+    "ext": "js"
+  }
