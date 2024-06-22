@@ -4,7 +4,7 @@ import layout from './layout.js'
 import {
   convertToCustomer,
   showAttachments,
-  setDefaultValues,
+  // setDefaultValues,
   deadProspects,
   filterConvertedProspects,
 } from '../../actions/index.js'
@@ -20,14 +20,14 @@ export const actions: ResourceOptions['actions'] = {
   },
   new: {
     layout: layout.new,
-    before: [setDefaultValues],
-    custom: {
-      statusCode: 'ENTERED',
-      activityCode: 'FORM',
-      activityTitle: 'Zgłoszenie',
-      nextActivityCode: 'DECISION',
-      nextActivityDay: 30,
-    },
+    // before: [setDefaultValues],
+    // custom: {
+    //   statusCode: 'ENTERED',
+    //   activityCode: 'FORM',
+    //   activityTitle: 'Zgłoszenie',
+    //   nextActivityCode: 'DECISION',
+    //   nextActivityDay: 30,
+    // },
   },
   edit: {
     layout: layout.edit,
