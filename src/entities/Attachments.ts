@@ -1,12 +1,4 @@
-import {
-  Entity,
-  BaseEntity,
-  PrimaryGeneratedColumn,
-  Column,
-  BeforeInsert,
-  BeforeUpdate,
-  VirtualColumn,
-} from 'typeorm'
+import { Entity, BaseEntity, PrimaryGeneratedColumn, Column, BeforeInsert, BeforeUpdate } from 'typeorm'
 
 export interface IAttachments {
   id: number
@@ -16,6 +8,7 @@ export interface IAttachments {
   mimeTypes: Array<string>
   createdAt: Date
   updatedAt: Date | null
+  totalAttachments: number
 }
 
 @Entity({ name: 'attachments' })
@@ -41,17 +34,23 @@ export class Attachments extends BaseEntity implements IAttachments {
   @Column({ name: 'updated_at' })
   public updatedAt: Date
 
-  @VirtualColumn({ query: () => `SELECT json_array_length(files)` })
-  public counter: number
+  @Column({ type: 'integer', default: 0 })
+  public totalAttachments: number
 
   @BeforeInsert()
   public setCreateDate(): void {
-    this.createdAt = new Date();
-    this.updatedAt = new Date();
+    this.createdAt = new Date()
+    this.updatedAt = new Date()
   }
 
   @BeforeUpdate()
   public setUpdateDate(): void {
-    this.updatedAt = new Date();
+    this.updatedAt = new Date()
+  }
+
+  @BeforeInsert()
+  @BeforeUpdate()
+  public countTotalAttachments(): void {
+    this.totalAttachments = this.files ? this.files.length : 0
   }
 }

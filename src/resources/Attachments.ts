@@ -12,6 +12,13 @@ import { menu } from '../menu.js'
 //   },
 // }
 
+const localProviderConfig = {
+  bucket: 'public/files',
+  opts: {
+    baseUrl: '/files',
+  },
+}
+
 const AwsProviderConfig = {
   accessKeyId: process.env.AWS_ACCESS_KEY_ID as string,
   secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY as string,
@@ -29,7 +36,7 @@ export const AttachmentsResource: ResourceWithOptions = {
   resource: Attachments,
   options: {
     navigation: menu.app,
-    listProperties: ['company', 'updatedAt', 'counter'],
+    listProperties: ['company', 'updatedAt', 'totalAttachments'],
     filterProperties: ['company'],
     sort: {
       direction: 'desc',
@@ -49,7 +56,7 @@ export const AttachmentsResource: ResourceWithOptions = {
       mimeTypes: {
         isVisible: false,
       },
-      counter: {
+      totalAttachments: {
         components: {
           list: Components.ListCounter,
         },
@@ -79,8 +86,7 @@ export const AttachmentsResource: ResourceWithOptions = {
   features: [
     uploadFeature({
       componentLoader: AppComponentLoader,
-      provider: { aws: AwsProviderConfig },
-      // provider: { local: localProviderConfig },
+      provider: { local: localProviderConfig },
       properties: {
         key: 'files',
         bucket: 'folders',
@@ -90,6 +96,19 @@ export const AttachmentsResource: ResourceWithOptions = {
       multiple: true,
       // validation: { mimeTypes: ['image/png', 'application/pdf'] },
     }),
+    // uploadFeature({
+    //   componentLoader: AppComponentLoader,
+    //   provider: { aws: AwsProviderConfig },
+    //   // provider: { local: localProviderConfig },
+    //   properties: {
+    //     key: 'files',
+    //     bucket: 'folders',
+    //     mimeType: 'mimeTypes',
+    //     file: 'attachments',
+    //   },
+    //   multiple: true,
+    //   // validation: { mimeTypes: ['image/png', 'application/pdf'] },
+    // }),
     loggerFeature({
       componentLoader: AppComponentLoader,
     }),
