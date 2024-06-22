@@ -24,7 +24,7 @@ export const translations = {
           'activities.type': 'Action',
           'activities.title': 'Title',
           'activities.comment': 'Comment',
-          counter: 'Activities',
+          totalActivities: 'Activities',
         },
       },
       Prospect: {
@@ -52,7 +52,7 @@ export const translations = {
           'activities.type': 'Action',
           'activities.title': 'Title',
           'activities.comment': 'Comment',
-          counter: 'Activities',
+          totalActivities: 'Activities',
         },
       },
       Customer: {
@@ -86,7 +86,7 @@ export const translations = {
           'notes.date': 'Date',
           'notes.title': 'Title',
           'notes.content': 'Content',
-          counter: 'Activities',
+          totalActivities: 'Activities',
         },
       },
       Invoice: {
