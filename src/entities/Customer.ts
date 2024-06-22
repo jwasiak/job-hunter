@@ -76,6 +76,9 @@ export class Customer extends BaseEntity implements ICustomer {
   @Column({ type: 'json', nullable: true })
   public activities: Activity[]
 
+  @Column({ name: 'total_activities', default: false })
+  public totalActivities: number
+
   @Column({ type: 'json', nullable: true })
   public notes: Note[]
 
@@ -124,9 +127,7 @@ export class Customer extends BaseEntity implements ICustomer {
   })
   public totalBalance: number
 
-  @VirtualColumn({ query: () => `SELECT json_array_length(activities)` })
-  public counter: number
-
+  
   @BeforeInsert()
   public setCreateDate(): void {
     this.createdAt = new Date();
@@ -136,5 +137,11 @@ export class Customer extends BaseEntity implements ICustomer {
   @BeforeUpdate()
   public setUpdateDate(): void {
     this.updatedAt = new Date();
+  }
+
+  @BeforeInsert()
+  @BeforeUpdate()
+  public countTotalActivities(): void {
+    this.totalActivities = this.activities ? this.activities.length : 0
   }
 }

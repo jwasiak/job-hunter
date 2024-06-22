@@ -10,7 +10,7 @@ export const CustomersResource: ResourceWithOptions = {
   resource: Customer,
   options: {
     navigation: menu.app,
-    listProperties: ['company', 'statusCode', 'nextActivityDate', 'totalSales', 'totalBalance', 'counter'],
+    listProperties: ['company', 'statusCode', 'nextActivityDate', 'totalSales', 'totalBalance', 'totalActivities'],
     sort: {
       direction: 'desc',
       sortBy: 'updatedAt',
@@ -103,7 +103,7 @@ export const CustomersResource: ResourceWithOptions = {
       },
       totalSales: { type: 'currency' },
       totalBalance: { type: 'currency' },
-      counter: {
+      totalActivities: {
         components: {
           list: Components.ListCounter,
         },
