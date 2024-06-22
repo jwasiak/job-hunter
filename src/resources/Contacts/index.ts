@@ -9,7 +9,7 @@ export const ContactsResource: ResourceWithOptions = {
   resource: Contact,
   options: {
     navigation: menu.app,
-    listProperties: ['company', 'statusCode', 'nextActivityCode', 'nextActivityDate', 'counter'],
+    listProperties: ['company', 'statusCode', 'nextActivityCode', 'nextActivityDate', 'totalActivities'],
     filterProperties: ['company', 'statusCode', 'nextActivityCode', 'nextActivityDate', 'sourceId', 'businessId'],
     sort: {
       direction: 'desc',
@@ -77,7 +77,7 @@ export const ContactsResource: ResourceWithOptions = {
       nextActivityDate: {
         type: 'date',
       },
-      counter: {
+      totalActivities: {
         components: {
           list: Components.ListCounter,
         },

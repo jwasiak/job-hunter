@@ -6,7 +6,8 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
   RelationId,
-  VirtualColumn, BeforeInsert, BeforeUpdate
+  BeforeInsert,
+  BeforeUpdate,
 } from 'typeorm'
 
 import { Activity, Person } from './index.js'
@@ -70,6 +71,9 @@ export class Contact extends BaseEntity implements IContact {
   @Column({ type: 'json', nullable: true, default: '[]' })
   public activities: Activity[]
 
+  @Column({ name: 'total_activities', default: false })
+  public totalActivities: number
+
   @Column({ name: 'created_at' })
   public createdAt: Date
 
@@ -107,18 +111,20 @@ export class Contact extends BaseEntity implements IContact {
   @Column({ name: 'next_activity_date', nullable: true })
   public nextActivityDate: Date
 
-  @VirtualColumn({ query: () => `SELECT json_array_length(activities)` })
-  public counter: number
-
   @BeforeInsert()
   public setCreateDate(): void {
-    this.createdAt = new Date();
-    this.updatedAt = new Date();
+    this.createdAt = new Date()
+    this.updatedAt = new Date()
   }
 
   @BeforeUpdate()
   public setUpdateDate(): void {
-    this.updatedAt = new Date();
+    this.updatedAt = new Date()
   }
 
+  @BeforeInsert()
+  @BeforeUpdate()
+  public countTotalActivities(): void {
+    this.totalActivities = this.activities ? this.activities.length : 0
+  }
 }
