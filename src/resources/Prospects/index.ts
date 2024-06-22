@@ -10,7 +10,7 @@ export const ProspectsResource: ResourceWithOptions = {
   resource: Prospect,
   options: {
     navigation: menu.app,
-    listProperties: ['company', 'statusCode', 'nextActivityCode', 'nextActivityDate', 'counter'],
+    listProperties: ['company', 'statusCode', 'nextActivityCode', 'nextActivityDate', 'totalActivities'],
     filterProperties: ['company_', 'statusCode', 'nextActivityCode', 'nextActivityDate', 'sourceId', 'businessId'],
     sort: {
       direction: 'desc',
@@ -107,7 +107,7 @@ export const ProspectsResource: ResourceWithOptions = {
           edit: Components.CustomActionButton,
         },
       },
-      counter: {
+      totalActivities: {
         components: {
           list: Components.ListCounter,
         },

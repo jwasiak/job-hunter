@@ -8,7 +8,6 @@ import {
   PrimaryGeneratedColumn,
   RelationId,
   BeforeUpdate,
-  VirtualColumn,
 } from 'typeorm'
 
 import { Activity, Person, Note } from './index.js'
@@ -78,6 +77,9 @@ export class Prospect extends BaseEntity implements IProspect {
   @Column({ type: 'json', nullable: true })
   public activities: Activity[]
 
+  @Column({ name: 'total_activities', default: false })
+  public totalActivities: number
+
   @Column({ type: 'json', nullable: true })
   public notes: Note[]
 
@@ -118,20 +120,20 @@ export class Prospect extends BaseEntity implements IProspect {
   @Column({ name: 'next_activity_date', nullable: true })
   public nextActivityDate: Date
 
-  @VirtualColumn({ query: () => `SELECT json_array_length(activities)` })
-  public counter: number
-
-  @VirtualColumn({ query: () => `SELECT lower(company)` })
-  public company_: string
-
   @BeforeInsert()
   public setCreateDate(): void {
-    this.createdAt = new Date();
-    this.updatedAt = new Date();
+    this.createdAt = new Date()
+    this.updatedAt = new Date()
   }
 
   @BeforeUpdate()
   public setUpdateDate(): void {
-    this.updatedAt = new Date();
+    this.updatedAt = new Date()
+  }
+
+  @BeforeInsert()
+  @BeforeUpdate()
+  public countTotalActivities(): void {
+    this.totalActivities = this.activities ? this.activities.length : 0
   }
 }
