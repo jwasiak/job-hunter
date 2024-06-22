@@ -1,12 +1,4 @@
-import {
-  BaseEntity,
-  Column,
-  BeforeInsert,
-  Entity,
-  PrimaryGeneratedColumn,
-  BeforeUpdate,
-  // VirtualColumn,
-} from 'typeorm'
+import { BaseEntity, Column, BeforeInsert, Entity, PrimaryGeneratedColumn, BeforeUpdate } from 'typeorm'
 import { RoleEnum } from '../enums/Roles.js'
 interface IUser {
   id: number
@@ -58,20 +50,21 @@ export class User extends BaseEntity implements IUser {
   @Column({ default: false })
   public active: boolean
 
-  // @VirtualColumn({ query: () => `SELECT CONCAT(last_name,' ',first_name)` })
-  // public fullName: string
-
   @BeforeInsert()
   public setCreateDate(): void {
-    this.createdAt = new Date();
-    this.updatedAt = new Date();
-    this.fullName = `${this.firstName} ${this.lastName}`
+    this.createdAt = new Date()
+    this.updatedAt = new Date()
   }
 
   @BeforeUpdate()
   public setUpdateDate(): void {
     console.log(this.firstName, this.lastName)
-    this.updatedAt = new Date();
+    this.updatedAt = new Date()
+  }
+
+  @BeforeInsert()
+  @BeforeUpdate()
+  public setFullName(): void {
     this.fullName = `${this.firstName} ${this.lastName}`
   }
 }
