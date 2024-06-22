@@ -7,12 +7,14 @@
   "license": "MIT",
   "scripts": {
     "build": "rm -rf dist && tsc",
-    "dev": "NODE_ENV='develomenent' node dist/app.js",
+    "build:watch": "tsc -w",
+    "dev": "NODE_ENV='develomenent' nodemon",
     "start": "NODE_ENV='production' node dist/app.js",
     "migrate:up": "node -r dotenv/config ./node_modules/.bin/knex migrate:up",
     "migrate:down": "node -r dotenv/config ./node_modules/.bin/knex migrate:down",
     "seed:make": "node -r dotenv/config ./node_modules/.bin/knex seed:make",
-    "seed:run": "node -r dotenv/config ./node_modules/.bin/knex seed:run"
+    "seed:run": "node -r dotenv/config ./node_modules/.bin/knex seed:run",
+    "clear:log": "node -r dotenv/config ./node_modules/.bin/knex seed:run --specific=logs.js"
   },
   "dependencies": {
     "@adminjs/express": "^6.0.0",
@@ -32,6 +34,7 @@
     "express-session-sqlite": "^2.1.1",
     "knex": "^3.1.0",
     "lodash": "^4.17.21",
+    "nodemon": "^3.1.4",
     "pg": "^8.11.3",
     "sqlite3": "^5.1.7",
     "typeorm": "^0.3.16"
