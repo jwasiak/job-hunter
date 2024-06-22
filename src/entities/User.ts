@@ -58,13 +58,14 @@ export class User extends BaseEntity implements IUser {
 
   @BeforeUpdate()
   public setUpdateDate(): void {
-    console.log(this.firstName, this.lastName)
     this.updatedAt = new Date()
   }
 
   @BeforeInsert()
   @BeforeUpdate()
   public setFullName(): void {
+    this.firstName ??= ''
+    this.lastName ??= ''
     this.fullName = `${this.firstName} ${this.lastName}`
   }
 }
