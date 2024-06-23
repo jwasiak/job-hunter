@@ -227,16 +227,223 @@ export const translations = {
       createdAt: 'Utworzony',
       updatedAt: 'Zmieniony',
     },
+
     resources: {
-      users: {
+      Contact: {
+        labels: {
+          Contact: 'Kontakty',
+        },
+        actions: {
+          list: 'Kontakty',
+          show: 'Podgląd',
+          edit: 'Edycja',
+          delete: 'Usuń',
+        },
+        properties: {
+          company: 'Firma',
+          email: 'E-mail',
+          sourceId: 'Źródło',
+          businessId: 'Branża',
+          statusCode: 'Status',
+          nextActivityCode: 'Następne działanie',
+          nextActivityDate: 'Planowana data działania',
+          'activities.date': 'Data',
+          'activities.type': 'Działanie',
+          'activities.title': 'Tytuł',
+          'activities.comment': 'Komentarz',
+          totalActivities: 'Ilość akcji',
+        },
+      },
+      Prospect: {
+        labels: {
+          Prospect: 'Prospekci',
+        },
+        actions: {
+          list: 'Prospekci',
+          show: 'Podgląd',
+          edit: 'Edycja',
+          delete: 'Usuń',
+        },
+        properties: {
+          company: 'Firma',
+          email: 'E-mail',
+          sourceId: 'Źródło',
+          businessId: 'Branża',
+          'address.postalCode': 'Post code',
+          'address.city': 'City',
+          'address.address': 'Address',
+          'address.country': 'Country',
+          nextActivityCode: 'Następne działanie',
+          nextActivityDate: 'Planowana data działania',
+          'activities.date': 'Data',
+          'activities.type': 'Działanie',
+          'activities.title': 'Tytuł',
+          'activities.comment': 'Komentarz',
+          totalActivities: 'Ilość akcji',
+        },
+      },
+      Customer: {
+        labels: {
+          Customer: 'Customers',
+        },
+        actions: {
+          list: 'Customers',
+          show: 'Podgląd',
+          edit: 'Edycja',
+          delete: 'Usuń',
+        },
+        properties: {
+          company: 'Firma',
+          email: 'E-mail',
+          sourceId: 'Źródło',
+          businessId: 'Branża',
+          statusCode: 'Status',
+          nextActivityCode: 'Następne działanie',
+          nextActivityDate: 'Planowana data działania',
+          'activities.date': 'Data',
+          'activities.type': 'Działanie',
+          'activities.title': 'Tytuł',
+          'activities.comment': 'Komentarz',
+          totalActivities: 'Ilość akcji',
+          'address.postalCode': 'Kod pocztowy',
+          'address.city': 'Miejscowość',
+          'address.address': 'Adres',
+          'address.country': 'Kraj',
+          'persons.name': 'Imię i nazwisko',
+          'persons.email': 'E-mail',
+          'persons.phone': 'Telefon',
+          'notes.date': 'Data',
+          'notes.title': 'Tytuł',
+          'notes.content': 'Treść',
+        },
+      },
+      Invoice: {
+        labels: {
+          Invoice: 'Invoices',
+        },
+        actions: {
+          list: 'Invoices',
+          show: 'Podgląd',
+          edit: 'Edycja',
+          delete: 'Usuń',
+        },
+        properties: {
+          customerId: 'Klient',
+          invoiceDate: 'Daya',
+          invoiceValue: 'Wartość',
+          dueDate: 'Termin zapłaty',
+          paid: 'Zapłacono',
+          'items.name': 'Nazwa',
+          'items.quantity': 'Ilość',
+          'items.unit': 'Jednostka',
+          'items.price': 'Cena',
+          'items.value': 'Wartość',
+          'payments.date': 'Data płatności',
+          'payments.source': 'Źródło',
+          'payments.value': 'Kwota',
+        },
+      },
+      Attachments: {
+        labels: {
+          Attachments: 'Załączniki',
+        },
+        actions: {
+          list: 'Załączniki',
+          show: 'Podgląd',
+          edit: 'Edycja',
+          delete: 'Usuń',
+        },
+      },
+      Log: {
+        labels: {
+          Log: 'Logi',
+        },
+        actions: {
+          list: 'Logi',
+          show: 'Podgląd',
+        },
+      },
+      ActivityType: {
+        labels: {
+          ActivityType: 'Działania',
+        },
+        actions: {
+          list: 'Działania',
+          show: 'Podgląd',
+          edit: 'Edycja',
+          delete: 'Usuń',
+        },
+      },
+      CompanyStatus: {
+        labels: {
+          CompanyStatus: 'Statusy',
+        },
+        actions: {
+          list: 'Statusy',
+          show: 'Podgląd',
+          edit: 'Edycja',
+          delete: 'Usuń',
+        },
+      },
+      Source: {
+        labels: {
+          Source: 'Źródła',
+        },
+        actions: {
+          list: 'Źródła',
+          show: 'Podgląd',
+          edit: 'Edycja',
+          delete: 'Usuń',
+        },
+      },
+      Link: {
+        labels: {
+          Link: 'Linki',
+        },
+        actions: {
+          list: 'Linki',
+          show: 'Podgląd',
+          edit: 'Edycja',
+          delete: 'Usuń',
+        },
+      },
+      User: {
         labels: {
           User: 'Użytkownicy',
+        },
+        actions: {
+          list: 'Użytkownicy',
+          show: 'Podgląd',
+          edit: 'Edycja',
+          delete: 'Usuń',
         },
         properties: {
           role: 'Rola',
           name: 'Imię',
           surname: 'Nazwisko',
           newPassword: 'Nowe hasło',
+        },
+      },
+      Template: {
+        labels: {
+          Template: 'Szablony',
+        },
+        actions: {
+          list: 'Szablony',
+          show: 'Podgląd',
+          edit: 'Edycja',
+          delete: 'Usuń',
+        },
+      },
+      Business: {
+        labels: {
+          Business: 'Branże',
+        },
+        actions: {
+          list: 'Branże',
+          show: 'Podgląd',
+          edit: 'Edycja',
+          delete: 'Usuń',
         },
       },
     },

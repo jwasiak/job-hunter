@@ -50,9 +50,9 @@ export const AdminConfig: AdminJSOptions = {
   },
 
   locale: {
-    availableLanguages: ['en'],
-    debug: false,
-    language: 'en',
+    availableLanguages: ['pl'],
+    debug: true,
+    language: 'pl',
     translations,
   },
   pages: {
