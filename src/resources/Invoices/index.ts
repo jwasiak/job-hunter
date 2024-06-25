@@ -2,7 +2,7 @@ import { ResourceWithOptions } from 'adminjs'
 import { menu } from '../../menu.js'
 import { actions } from './actions.js'
 import { features } from './features.js'
-// import { Components } from '../../AppComponentLoader.js'
+import { Components } from '../../AppComponentLoader.js'
 import { Invoice } from '../../entities/Invoice.js'
 import { UnitsEnum } from '../../enums/Units.js'
 import { PaymentSourcesEnum } from '../../enums/PaymentSources.js'
@@ -20,7 +20,8 @@ export const InvoicesResource: ResourceWithOptions = {
     },
     actions,
     properties: {
-      invoiceNo: { isTitle: true },
+      invoiceNo: { isTitle: true, isRequired: true },
+      customerId: { isRequired: true },
       items: { type: 'mixed', isArray: true },
       note: { type: 'textarea' },
 
@@ -37,12 +38,30 @@ export const InvoicesResource: ResourceWithOptions = {
       'payments.value': { type: 'number' },
 
       isPaid: { isVisible: false },
-      paid: { type: 'currency', props: { readOnly: 'readonly' } },
+      paid: {
+        type: 'currency',
+        components: {
+          list: Components.FormatedCurrency,
+        },
+        props: { readOnly: 'readonly' },
+      },
 
-      invoiceDate: { type: 'date' },
-      dueDate: { type: 'date' },
-      invoiceValue: { type: 'currency', props: { readOnly: 'readonly' } },
-      balance: { type: 'currency', props: { readOnly: 'readonly' } },
+      invoiceDate: { type: 'date', isRequired: true },
+      dueDate: { type: 'date', isRequired: true },
+      invoiceValue: {
+        type: 'currency',
+        components: {
+          list: Components.FormatedCurrency,
+        },
+        props: { readOnly: 'readonly' },
+      },
+      balance: {
+        type: 'currency',
+        components: {
+          list: Components.FormatedCurrency,
+        },
+        props: { readOnly: 'readonly' },
+      },
     },
   },
   features,

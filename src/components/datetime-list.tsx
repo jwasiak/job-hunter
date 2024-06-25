@@ -1,5 +1,5 @@
 import { formatDateProperty } from '@adminjs/design-system'
-import { PropertyType, ShowPropertyProps, allowOverride } from 'adminjs'
+import { PropertyType, ShowPropertyProps } from 'adminjs'
 import React from 'react'
 
 const mapValue = (value: Date, propertyType: PropertyType): string => {

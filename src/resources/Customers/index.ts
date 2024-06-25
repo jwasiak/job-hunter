@@ -68,7 +68,6 @@ export const CustomersResource: ResourceWithOptions = {
         },
       },
       'persons.phone': { type: 'string' },
-
       notes: {
         type: 'mixed',
         isArray: true,
@@ -101,8 +100,18 @@ export const CustomersResource: ResourceWithOptions = {
           show: Components.Invoices,
         },
       },
-      totalSales: { type: 'currency' },
-      totalBalance: { type: 'currency' },
+      totalSales: {
+        type: 'currency',
+        components: {
+          list: Components.FormatedCurrency,
+        },
+      },
+      totalBalance: {
+        type: 'currency',
+        components: {
+          list: Components.FormatedCurrency,
+        },
+      },
       totalActivities: {
         components: {
           list: Components.ListCounter,

@@ -18,4 +18,5 @@ export const Components = {
   Invoices: AppComponentLoader.add('Invoices', './components/invoices'),
   SelectTemplateToClipboard: AppComponentLoader.add('SelectTemplateToClipboard', './components/select-template'),
   DeadProspects: AppComponentLoader.add('DeadProspects', './components/dead-prospects'),
+  FormatedCurrency: AppComponentLoader.add('FormatedCurrency', './components/formated-currency'),
 }
