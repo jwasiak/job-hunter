@@ -8,12 +8,14 @@ import {
   PrimaryGeneratedColumn,
   RelationId,
   BeforeUpdate,
-  VirtualColumn,
+  AfterInsert,
+  AfterUpdate,
 } from 'typeorm'
 
 import { Customer } from './Customer.js'
 import { InvoiceItem } from './InvoiceItems.js'
 import { Payment } from './Payments.js'
+
 
 export interface IInvoice {
   id: number
@@ -33,6 +35,7 @@ export interface IInvoice {
   payments: Array<Payment>
   createdAt: Date
   updatedAt: Date
+  // totalSales: number
 }
 
 @Entity({ name: 'invoices' })
@@ -89,17 +92,43 @@ export class Invoice extends BaseEntity implements IInvoice {
   @Column({ type: 'numeric', name: 'invoice_value', default: 0 })
   public invoiceValue: number
 
-  @VirtualColumn({ query: () => `SELECT paid-invoice_value` })
+  @Column({ type: 'numeric', name: 'balance', default: 0 })
   public balance: number
 
   @BeforeInsert()
   public setCreateDate(): void {
-    this.createdAt = new Date();
-    this.updatedAt = new Date();
+    this.createdAt = new Date()
+    this.updatedAt = new Date()
   }
 
   @BeforeUpdate()
   public setUpdateDate(): void {
-    this.updatedAt = new Date();
+    this.updatedAt = new Date()
+  }
+
+  @BeforeInsert()
+  @BeforeUpdate()
+  public calculateBalance(): void {
+    this.balance = this.paid - this.invoiceValue
+  }
+
+  @AfterInsert()
+  @AfterUpdate()
+  public async calculateTotalSales(): Promise<void> {
+    const { sales } = await Invoice.createQueryBuilder()
+      .select('SUM(invoice_value)', 'sales')
+      .where('customer_id = :id', { id: this.customerId })
+      .getRawOne()
+
+    const { paid } = await Invoice.createQueryBuilder()
+      .select('SUM(paid)', 'paid')
+      .where('customer_id = :id', { id: this.customerId })
+      .getRawOne()
+
+    await Customer.createQueryBuilder()
+      .update(Customer)
+      .set({ totalSales: sales, totalBalance: paid - sales })
+      .where('id = :id', { id: this.customerId })
+      .execute()
   }
 }

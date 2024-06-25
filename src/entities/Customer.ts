@@ -8,7 +8,6 @@ import {
   PrimaryGeneratedColumn,
   RelationId,
   BeforeUpdate,
-  VirtualColumn,
 } from 'typeorm'
 
 import { Activity, Person, Note } from './index.js'
@@ -119,24 +118,21 @@ export class Customer extends BaseEntity implements ICustomer {
   @Column({ name: 'next_activity_date', nullable: true })
   public nextActivityDate: Date
 
-  @VirtualColumn({ query: name => `SELECT SUM(invoice_value) FROM invoices WHERE customer_id=${name}.id` })
+  @Column({ name: 'total_sales', default: false })
   public totalSales: number
 
-  @VirtualColumn({
-    query: name => `SELECT (SUM(paid) - SUM(invoice_value)) FROM invoices WHERE customer_id=${name}.id`,
-  })
+  @Column({ name: 'total_balance', default: false })
   public totalBalance: number
 
-  
   @BeforeInsert()
   public setCreateDate(): void {
-    this.createdAt = new Date();
-    this.updatedAt = new Date();
+    this.createdAt = new Date()
+    this.updatedAt = new Date()
   }
 
   @BeforeUpdate()
   public setUpdateDate(): void {
-    this.updatedAt = new Date();
+    this.updatedAt = new Date()
   }
 
   @BeforeInsert()

@@ -1,13 +1,13 @@
 import {
   ResourceOptions,
-  BaseResource,
+  // BaseResource,
   ActionRequest,
-  ActionResponse,
-  ActionContext,
-  BaseRecord,
-  AppError,
+  // ActionResponse,
+  // ActionContext,
+  // BaseRecord,
+  // AppError,
   flat,
-  ValidationError,
+  // ValidationError,
 } from 'adminjs'
 
 import { InvoiceItem } from '../../entities/InvoiceItems.js'
@@ -32,8 +32,8 @@ const beforeHandler = (req: ActionRequest): ActionRequest => {
   }
   if (payload.payments) {
     paid = payload.payments.reduce((acc: number, payment: Payment) => acc + Number(payment.value), 0)
-    payload.paid = paid
   }
+  payload.paid = paid
   if (invoiceValue <= paid) {
     payload.isPaid = true
   }
