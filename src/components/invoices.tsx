@@ -5,7 +5,7 @@ import {
   Label,
   Button,
   Icon,
-  Section,
+  // Section,
   Table,
   TableBody,
   TableRow,
@@ -22,6 +22,7 @@ const Invoices: FC<InvoicesProps> = props => {
   const { record, where } = props
   const [invoices, setInvoices] = useState<RecordJSON[]>([])
   const InvoiceResource = useResource('Invoice')
+  // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
   const NewInvoiceAction = InvoiceResource?.actions.find(action => action.name === 'new')!
   const api = new ApiClient()
 
@@ -45,7 +46,7 @@ const Invoices: FC<InvoicesProps> = props => {
 
   return (
     <Box width={1} mb="xl">
-      {!!invoices.length && (
+      {invoices.length && (
         <>
           <Label> Invoices </Label>
           <Table>
@@ -66,9 +67,11 @@ const Invoices: FC<InvoicesProps> = props => {
                   <TableCell>{record.params.invoiceDate}</TableCell>
                   <TableCell>{record.params.dueDate}</TableCell>
                   <TableCell>
-                    {formatCurrencyProperty({ value: record.params.invoiceValue, decimalScale: 2 })}
+                    {formatCurrencyProperty({ value: String(record.params.invoiceValue), decimalScale: 2 })}
                   </TableCell>
-                  <TableCell>{formatCurrencyProperty({ value: record.params.paid, decimalScale: 2 })}</TableCell>
+                  <TableCell>
+                    {formatCurrencyProperty({ value: String(record.params.paid), decimalScale: 2 })}
+                  </TableCell>
                   <TableCell>
                     {record.recordActions.map(action => (
                       <ActionButton
