@@ -220,6 +220,14 @@ export const translations = {
     },
   },
   pl: {
+    labels: {
+      dashboard: 'Pulpit',
+      Settings: 'Konfiguracja',
+      Users: 'Użytkownicy',
+    },
+    pages: {
+      Help: 'Pomoc',
+    },
     buttons: {
       changePassword: 'Zmień hasło',
     },
@@ -227,7 +235,6 @@ export const translations = {
       createdAt: 'Utworzony',
       updatedAt: 'Zmieniony',
     },
-
     resources: {
       Contact: {
         labels: {
@@ -268,6 +275,7 @@ export const translations = {
           company: 'Firma',
           email: 'E-mail',
           sourceId: 'Źródło',
+          statusCode: 'Status',
           businessId: 'Branża',
           'address.postalCode': 'Post code',
           'address.city': 'City',
@@ -284,10 +292,10 @@ export const translations = {
       },
       Customer: {
         labels: {
-          Customer: 'Customers',
+          Customer: 'Klienci',
         },
         actions: {
-          list: 'Customers',
+          list: 'Klienci',
           show: 'Podgląd',
           edit: 'Edycja',
           delete: 'Usuń',
@@ -298,6 +306,8 @@ export const translations = {
           sourceId: 'Źródło',
           businessId: 'Branża',
           statusCode: 'Status',
+          totalSales: 'Łączna sprzedaż',
+          totalBalance: 'Saldo',
           nextActivityCode: 'Następne działanie',
           nextActivityDate: 'Planowana data działania',
           'activities.date': 'Data',
@@ -319,28 +329,47 @@ export const translations = {
       },
       Invoice: {
         labels: {
-          Invoice: 'Invoices',
+          Invoice: 'Faktury',
         },
         actions: {
-          list: 'Invoices',
+          list: 'Faktury',
           show: 'Podgląd',
           edit: 'Edycja',
           delete: 'Usuń',
         },
         properties: {
+          invoiceNo: 'Numer faktury',
           customerId: 'Klient',
-          invoiceDate: 'Daya',
+          invoiceDate: 'Data faktury',
           invoiceValue: 'Wartość',
           dueDate: 'Termin zapłaty',
+          note: 'Uwagi',
           paid: 'Zapłacono',
+          // items: 'Pozycje faktury',
+          items: {
+            name: 'Nazwa',
+            quantity: 'Ilość',
+            unit: 'Jednostka',
+            price: 'Cena',
+            value: 'Wartość',
+            addNewItem: 'Dodaj pozycję faktury',
+          },
           'items.name': 'Nazwa',
           'items.quantity': 'Ilość',
           'items.unit': 'Jednostka',
           'items.price': 'Cena',
           'items.value': 'Wartość',
+          // payments: 'Płatności',
+          payments: {
+            date: 'Data płatności',
+            source: 'Źródło',
+            value: 'Kwota',
+            addNewItem: 'Dodaj płatność',
+          },
           'payments.date': 'Data płatności',
-          'payments.source': 'Źródło',
+          'payments.source': 'Sposób zapłaty',
           'payments.value': 'Kwota',
+          balance: 'Saldo',
         },
       },
       Attachments: {
@@ -353,6 +382,10 @@ export const translations = {
           edit: 'Edycja',
           delete: 'Usuń',
         },
+        properties: {
+          company: 'Firma',
+          totalAttachments: 'Ilość załączników',
+        },
       },
       Log: {
         labels: {
@@ -361,6 +394,12 @@ export const translations = {
         actions: {
           list: 'Logi',
           show: 'Podgląd',
+        },
+        properties: {
+          user: 'Id użytkownika',
+          recordId: 'Id rekordu',
+          resource: 'Nazwa zasobu',
+          action: 'Operacja',
         },
       },
       ActivityType: {
@@ -373,6 +412,11 @@ export const translations = {
           edit: 'Edycja',
           delete: 'Usuń',
         },
+        properties: {
+          code: 'Kod',
+          name: 'Nazwa',
+          isActive: 'Aktywny',
+        },
       },
       CompanyStatus: {
         labels: {
@@ -384,16 +428,25 @@ export const translations = {
           edit: 'Edycja',
           delete: 'Usuń',
         },
+        properties: {
+          code: 'Kod',
+          name: 'Nazwa',
+          order: 'Kolejność',
+        },
       },
       Source: {
         labels: {
           Source: 'Źródła',
         },
+
         actions: {
           list: 'Źródła',
           show: 'Podgląd',
           edit: 'Edycja',
           delete: 'Usuń',
+        },
+        properties: {
+          name: 'Nazwa',
         },
       },
       Link: {
@@ -405,6 +458,9 @@ export const translations = {
           show: 'Podgląd',
           edit: 'Edycja',
           delete: 'Usuń',
+        },
+        properties: {
+          name: 'Nazwa',
         },
       },
       User: {
@@ -418,6 +474,8 @@ export const translations = {
           delete: 'Usuń',
         },
         properties: {
+          fullName: 'Imię i nazwisko',
+          email: 'E-mail',
           role: 'Rola',
           name: 'Imię',
           surname: 'Nazwisko',
@@ -434,6 +492,9 @@ export const translations = {
           edit: 'Edycja',
           delete: 'Usuń',
         },
+        properties: {
+          name: 'Nazwa',
+        },
       },
       Business: {
         labels: {
@@ -444,6 +505,9 @@ export const translations = {
           show: 'Podgląd',
           edit: 'Edycja',
           delete: 'Usuń',
+        },
+        properties: {
+          name: 'Nazwa',
         },
       },
     },
