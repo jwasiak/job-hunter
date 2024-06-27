@@ -1,6 +1,6 @@
 import { AdminJSOptions } from 'adminjs'
 import { AppComponentLoader, Components } from './AppComponentLoader.js'
-import { translations } from './translations.js'
+import { translations } from './translations/index.js'
 
 export const AdminConfig: AdminJSOptions = {
   componentLoader: AppComponentLoader,
@@ -11,7 +11,7 @@ export const AdminConfig: AdminJSOptions = {
     component: Components.JHdashboard,
   },
   branding: {
-    logo: false,
+    logo: "/job-hunter-logo.png",
     companyName: 'JOB HUNTER',
     withMadeWithLove: false,
     theme: {
