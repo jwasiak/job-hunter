@@ -1,6 +1,6 @@
 export enum UnitsEnum {
-  Any = 'ANY',
-  Hours = 'HOURS',
-  Km = 'KM',
-  Pieces = 'PIECES',
+  ANY = 'ANY',
+  HOUR = 'HOUR',
+  KM = 'KM',
+  PIECES = 'PIECES',
 }
