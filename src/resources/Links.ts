@@ -11,6 +11,7 @@ export const LinksResource: ResourceWithOptions = {
     listProperties: ['url', 'description', 'category'],
     filterProperties: ['url', 'description', 'category'],
     showProperties: ['id', 'url', 'description', 'category'],
+    editProperties: ['url', 'description', 'category'],
     actions: {
       bulkDelete: {
         isAccessible: false,
