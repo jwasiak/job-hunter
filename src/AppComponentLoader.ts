@@ -12,6 +12,7 @@ export const Components = {
     './components/sidebar-resource-section'
   ),
   SidebarBranding: AppComponentLoader.override('SidebarBranding', './components/sidebar-branding'),
+  Login: AppComponentLoader.override('Login', './components/login'),
   HelpPage: AppComponentLoader.add('HelpPage', './components/help-page'),
   ListCounter: AppComponentLoader.add('ListCounter', './components/list-counter'),
   CustomActionButton: AppComponentLoader.add('CustomActionButton', './components/action-button'),
