@@ -16,6 +16,12 @@ export const UsersResource: ResourceWithOptions = {
       sortBy: 'lastName',
     },
     actions: {
+      show: {
+        isVisible: false,
+      },
+      edit: {
+        showInDrawer: true,
+      },
       list: {
         showFilter: false,
       },
