@@ -8,8 +8,9 @@ export const AppDataSource = (entities: ConstructorParameters<typeof DataSource>
       type: process.env.DB_CLIENT,
       database: `./db/job-hunter.db`,
       entities,
-      logging: true,
-      synchronize: true,
+      logging: process.env.NODE_ENV === 'production' ? false : true,
+      // synchronize: process.env.NODE_ENV === 'production' ? false : true,
+      synchronize: false,
       subscribers: [],
       migrations: [],
     }
