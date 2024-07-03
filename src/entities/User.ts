@@ -1,4 +1,4 @@
-import { BaseEntity, Column, BeforeInsert, Entity, PrimaryGeneratedColumn, BeforeUpdate } from 'typeorm'
+import { BaseEntity, Column, BeforeInsert, Entity, PrimaryGeneratedColumn, BeforeUpdate, VirtualColumn } from 'typeorm'
 import { RoleEnum } from '../enums/Roles.js'
 interface IUser {
   id: number
@@ -34,16 +34,17 @@ export class User extends BaseEntity implements IUser {
   @Column({ name: 'full_name', type: 'text', nullable: true })
   public fullName: string
 
-  @Column({ name: 'created_at' })
+  @Column({ name: 'created_at'})
   public createdAt: Date
 
-  @Column({ name: 'updated_at' })
+  @Column({ name: 'updated_at', nullable: true })
   public updatedAt?: Date
 
   @Column({
     type: 'text',
     enum: RoleEnum,
     nullable: true,
+    default: 'USER'
   })
   public role: RoleEnum
 
@@ -53,7 +54,6 @@ export class User extends BaseEntity implements IUser {
   @BeforeInsert()
   public setCreateDate(): void {
     this.createdAt = new Date()
-    this.updatedAt = new Date()
   }
 
   @BeforeUpdate()

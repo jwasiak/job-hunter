@@ -34,7 +34,7 @@ export class Attachments extends BaseEntity implements IAttachments {
   @Column({ name: 'updated_at' })
   public updatedAt: Date
 
-  @Column({ type: 'integer', default: 0 })
+  @Column({ name: 'total_attachments',type: 'integer', default: 0 })
   public totalAttachments: number
 
   @BeforeInsert()

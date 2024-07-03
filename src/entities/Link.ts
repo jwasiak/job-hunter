@@ -14,10 +14,10 @@ export class Link extends BaseEntity implements ILink {
   @PrimaryGeneratedColumn()
   public id: number
 
-  @Column({ name: 'created_at' })
+  @Column({ name: 'created_at', nullable: true })
   public createdAt: Date
 
-  @Column({ name: 'updated_at' })
+  @Column({ name: 'updated_at', nullable: true  })
   public updatedAt: Date
 
   @Column()

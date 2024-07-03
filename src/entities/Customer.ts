@@ -118,10 +118,10 @@ export class Customer extends BaseEntity implements ICustomer {
   @Column({ name: 'next_activity_date', nullable: true })
   public nextActivityDate: Date
 
-  @Column({ name: 'total_sales', default: false })
+  @Column({ name: 'total_sales', default: 0 })
   public totalSales: number
 
-  @Column({ name: 'total_balance', default: false })
+  @Column({ name: 'total_balance', default: 0 })
   public totalBalance: number
 
   @BeforeInsert()
