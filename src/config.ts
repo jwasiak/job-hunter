@@ -4,6 +4,10 @@ import { translations } from './translations/index.js'
 
 export const AdminConfig: AdminJSOptions = {
   componentLoader: AppComponentLoader,
+  assetsCDN:
+  process.env.NODE_ENV === "production"
+    ? `http://${process.env.HOSTNAME}:${process.env.PORT}`
+    : undefined,
   assets: {
     styles: ['/adminjs.css'],
   },
