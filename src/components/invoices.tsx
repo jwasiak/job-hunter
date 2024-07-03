@@ -98,7 +98,7 @@ const Invoices: FC<InvoicesProps> = props => {
           <ActionButton action={NewInvoiceAction} resourceId="Invoice">
             <Button variant="outlined">
               <Icon icon="Plus" />
-              Add new invoice
+              {translateComponent('Invoices.label.addNewInvoice')}
             </Button>
           </ActionButton>
         </Box>
