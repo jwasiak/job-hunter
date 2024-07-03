@@ -46,7 +46,7 @@ export const actions: ResourceOptions['actions'] = {
     actionType: 'record',
     icon: 'Send',
     variant: 'secondary',
-    guard: 'Are yo sure to convert this prospect into customer',
+    guard: 'areYouSureToConvertThisProspectIntoCustomer',
     component: false,
     handler: convertToCustomer,
   },

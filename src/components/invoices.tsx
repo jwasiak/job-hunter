@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from 'react'
-import { ApiClient, ActionProps, RecordJSON, ActionButton, useResource } from 'adminjs'
+import { ApiClient, ActionProps, RecordJSON, ActionButton, useResource, useTranslation} from 'adminjs'
 import {
   Box,
   Label,
@@ -22,6 +22,7 @@ const Invoices: FC<InvoicesProps> = props => {
   const { record, where } = props
   const [invoices, setInvoices] = useState<RecordJSON[]>([])
   const InvoiceResource = useResource('Invoice')
+  const {translateComponent} = useTranslation()
   // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
   const NewInvoiceAction = InvoiceResource?.actions.find(action => action.name === 'new')!
   const api = new ApiClient()
@@ -52,12 +53,12 @@ const Invoices: FC<InvoicesProps> = props => {
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell>No</TableCell>
-                <TableCell>Date</TableCell>
-                <TableCell>Due date</TableCell>
-                <TableCell>Value</TableCell>
-                <TableCell>Paid</TableCell>
-                <TableCell>Actions</TableCell>
+                <TableCell>{translateComponent('Invoices.label.no')}</TableCell>
+                <TableCell>{translateComponent('Invoices.label.date')}</TableCell>
+                <TableCell>{translateComponent('Invoices.label.dueDate')}</TableCell>
+                <TableCell>{translateComponent('Invoices.label.value')}</TableCell>
+                <TableCell>{translateComponent('Invoices.label.paid')}</TableCell>
+                <TableCell>{translateComponent('Invoices.label.actions')}</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>

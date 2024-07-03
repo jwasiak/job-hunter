@@ -1,8 +1,22 @@
 export const pl = {
+  components: {
+    Invoices :{
+      label: {
+        no: "Nr faktury",
+        date: "Data",
+        dueDate: "Termin zapłaty",
+        value: "Wartość",
+        paid: "Zapłacono",
+        actions: "Akcje",
+        addNewInvoice: "Utwórz nową fakturę",
+      },
+    },
+  },
   labels: {
     dashboard: 'Pulpit',
     Settings: 'Konfiguracja',
     Users: 'Użytkownicy',
+    confirm: 'Potwierdź',
     category: {
       ADVERTISEMENT: 'Reklama',
       SOCIAL_MEDIA: 'Media społecznościowe',
@@ -29,13 +43,18 @@ export const pl = {
       labels: {
         Contact: 'Kontakty',
         selectTemplateToClipboard: 'Wybierz szablon aby skopiować go do schowka',
-        'persons.email': 'E-mail ***',
+        'persons.email': 'E-mail',
       },
       actions: {
         list: 'Kontakty',
         show: 'Podgląd',
         edit: 'Edycja',
         delete: 'Usuń',
+        attachments: 'Załączniki',
+        convert: 'Konwertuj',
+      },
+      messages: {
+        areYouSureToConvertThisContactIntoProspect: 'Czy na pewno chcesz przekształcić ten kontakt na prospekta?'
       },
       properties: {
         company: 'Firma',
@@ -69,6 +88,11 @@ export const pl = {
         show: 'Podgląd',
         edit: 'Edycja',
         delete: 'Usuń',
+        attachments: 'Załączniki',
+        convert: 'Konwertuj',
+      },
+      messages: {
+        areYouSureToConvertThisProspectIntoCustomer: 'Czy na pewno chcesz przekształcić tego prospekta w klienta?'
       },
       properties: {
         company: 'Firma',
@@ -86,6 +110,7 @@ export const pl = {
         'activities.type': 'Działanie',
         'activities.title': 'Tytuł',
         'activities.comment': 'Komentarz',
+        'activities.addNewItem': 'Dodaj nowe działanie',
         totalActivities: 'Ilość akcji',
         'notes.date': 'Data',
         'notes.title': 'Tytuł',
@@ -106,6 +131,9 @@ export const pl = {
       properties: {
         company: 'Firma',
         email: 'E-mail',
+        phone: "Telefon",
+        url: "Strona www",
+        taxId: "NIP",
         sourceId: 'Źródło',
         businessId: 'Branża',
         statusCode: 'Status',
@@ -117,6 +145,7 @@ export const pl = {
         'activities.type': 'Działanie',
         'activities.title': 'Tytuł',
         'activities.comment': 'Komentarz',
+        'activities.addNewItem': 'Dodaj nowe działanie',
         totalActivities: 'Ilość akcji',
         'address.postalCode': 'Kod pocztowy',
         'address.city': 'Miejscowość',
@@ -155,28 +184,12 @@ export const pl = {
         dueDate: 'Termin zapłaty',
         note: 'Uwagi',
         paid: 'Zapłacono',
-        // items: 'Pozycje faktury',
-        // items: {
-        //   name: 'Nazwa',
-        //   quantity: 'Ilość',
-        //   unit: 'Jednostka',
-        //   price: 'Cena',
-        //   value: 'Wartość',
-        //   addNewItem: 'Dodaj pozycję faktury',
-        // },
         'items.name': 'Nazwa',
         'items.quantity': 'Ilość',
         'items.unit': 'Jednostka',
         'items.price': 'Cena',
         'items.value': 'Wartość',
         'items.addNewItem': 'Dodaj pozycję faktury',
-        // payments: 'Płatności',
-        // payments: {
-        //   date: 'Data płatności',
-        //   source: 'Źródło',
-        //   value: 'Kwota',
-        //   addNewItem: 'Dodaj płatność',
-        // },
         'payments.date': 'Data płatności',
         'payments.source': 'Sposób zapłaty',
         'payments.value': 'Kwota',
@@ -306,10 +319,6 @@ export const pl = {
         surname: 'Nazwisko',
         newPassword: 'Nowe hasło',
         active: 'Aktywny',
-        // role: {
-        //   ADMIN: 'Administrator',
-        //   USER: 'Użytkownik',
-        // },
       },
     },
     Template: {
