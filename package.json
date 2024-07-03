@@ -10,6 +10,10 @@
     "build:watch": "tsc -w",
     "dev": "NODE_ENV='develomenent' nodemon",
     "start": "NODE_ENV='production' node dist/app.js",
+    "bundle": "node dist/bundle-admin.js",
+    "migrate:list": "node -r dotenv/config ./node_modules/.bin/knex migrate:list",
+    "migrate:latest": "node -r dotenv/config ./node_modules/.bin/knex migrate:latest",
+    "migrate:rollback": "node -r dotenv/config ./node_modules/.bin/knex migrate:rollback",
     "migrate:up": "node -r dotenv/config ./node_modules/.bin/knex migrate:up",
     "migrate:down": "node -r dotenv/config ./node_modules/.bin/knex migrate:down",
     "seed:make": "node -r dotenv/config ./node_modules/.bin/knex seed:make",
@@ -17,6 +21,7 @@
     "clear:log": "node -r dotenv/config ./node_modules/.bin/knex seed:run --specific=logs.js"
   },
   "dependencies": {
+    "@adminjs/bundler": "^3.0.0",
     "@adminjs/express": "^6.1.0",
     "@adminjs/import-export": "^3.0.0",
     "@adminjs/logger": "^5.0.1",
@@ -25,7 +30,7 @@
     "@adminjs/upload": "^4.0.2",
     "adminjs": "^7.8.1",
     "argon2": "^0.40.3",
-    "better-sqlite3": "^11.0.0",
+    "better-sqlite3": "^9.6.0",
     "connect-pg-simple": "^9.0.1",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
